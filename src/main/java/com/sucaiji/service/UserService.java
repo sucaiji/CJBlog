@@ -1,6 +1,5 @@
 package com.sucaiji.service;
 
-import com.sucaiji.entity.User;
 
 /**
  * Created by sucaiji on 2017/10/16.

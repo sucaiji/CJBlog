@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sucaiji.dao.UserDao">
+    <insert id="insertUser" parameterType="com.sucaiji.entity.User">
+        INSERT INTO USER(count,name,password,authorization) VALUES (#{count},#{name},#{password},#{authorization});
+    </insert>
+    <select id="selectByCountPassword" parameterType="Map" resultType="Integer">
+        SELECT id FROM USER
+          WHERE count=#{count} AND password=#{password}
+    </select>
+    <select id="selectAuthorizationById" parameterType="Integer" resultType="Integer">
+        SELECT authorization FROM USER
+          WHERE id=#{id}
+    </select>
+    <select id="selectNameById" parameterType="Integer" resultType="String">
+        SELECT name FROM USER
+          WHERE id=#{id}
+    </select>
+</mapper>

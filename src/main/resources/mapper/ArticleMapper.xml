@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sucaiji.dao.ArticleDao">
+    <select id="select" resultType="com.sucaiji.entity.Article">
+        SELECT * FROM ARTICLE
+    </select>
+    <select id="selectById" parameterType="Integer" resultType="com.sucaiji.entity.Article">
+        SELECT * FROM ARTICLE WHERE id=#{id}
+    </select>
+    <select id="selectTitle" resultType="String">
+        SELECT title FROM ARTICLE
+    </select>
+    <select id="selectId" resultType="Integer">
+        SELECT id FROM ARTICLE
+    </select>
+
+    <insert id="insert" parameterType="com.sucaiji.entity.Article">
+        INSERT INTO ARTICLE(title,content,time,click) VALUES (#{title},#{content},#{time},#{click})
+    </insert>
+
+</mapper>
