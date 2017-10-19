@@ -31,8 +31,8 @@ public class BackEndController {
         return "redirect:/index?code="+BaseInterceptor.COMMIT_ARTICLE_SUCCESS;
     }
 
-    @RequestMapping(value="/edit")
+    @RequestMapping(value="/write")
     public String edit(){
-        return "backend_article_edit";
+        return "backend_article_write";
     }
 }

@@ -11,8 +11,8 @@
     <br/>
     <div class="container">
         <ul class="list-inline">
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">示例</a></li>
+            <li><a href="https://github.com/sucaiji/CJBlog">GitHub</a></li>
+            <li><a href="http://59.110.223.79:8080">示例</a></li>
             <li><a href="#">关于</a></li>
         </ul>
         <br/>

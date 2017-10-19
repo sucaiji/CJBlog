@@ -14,7 +14,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/index">主页</a></li>
-                <li><a href="/backend/edit">后台</a></li>
+                <li><a href="/backend/main">后台</a></li>
                 <li><a href="/login">注册/登陆</a></li>
             </ul>
             <%
