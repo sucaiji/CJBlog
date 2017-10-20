@@ -14,6 +14,8 @@
 <jsp:include page="header.jsp"/>
 <jsp:include page="nav.jsp"/>
 
+<jsp:include page="backend_aside.jsp"/>
+
 <form action="/backend/article_commit" method="post">
     标题<input name="title" type="text">
     正文<input name="content" type="text">

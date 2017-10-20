@@ -21,4 +21,10 @@ public interface CommentDao {
      * @param comment
      */
     void insertComment(Comment comment);
+
+    /**
+     * 通过文章id删除评论
+     * @param articleId
+     */
+    void delectByArticleId(Integer articleId);
 }

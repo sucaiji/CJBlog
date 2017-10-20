@@ -9,6 +9,7 @@ import java.util.List;
  * Created by sucaiji on 2017/10/5.
  */
 public interface ArticleService {
+
     /**
      * 根据id获取文章
      *
@@ -45,4 +46,11 @@ public interface ArticleService {
      * @param content
      */
     void commitArticle(String title,String content);
+
+    /**
+     * 通过文章id删除文章,与这篇文章下的所有评论
+     * 如果删除成功，返回true，删除失败返回false
+     * @param id
+     */
+    boolean delectArticleById(Integer id);
 }

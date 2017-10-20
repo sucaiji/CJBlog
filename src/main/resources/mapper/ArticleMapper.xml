@@ -20,4 +20,8 @@
         INSERT INTO ARTICLE(title,content,time,click) VALUES (#{title},#{content},#{time},#{click})
     </insert>
 
+    <delete id="delectById" parameterType="Integer">
+        DELETE FROM ARTICLE WHERE id=#{id}
+    </delete>
+
 </mapper>

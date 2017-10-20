@@ -10,4 +10,8 @@
     <insert id="insertComment" parameterType="com.sucaiji.entity.Comment">
         INSERT INTO COMMENT(content,time,article_id,user_id) VALUES (#{content},#{time},#{articleId},#{userId})
     </insert>
+
+    <delete id="delectByArticleId" parameterType="Integer">
+        DELETE FROM COMMENT WHERE article_id=#{articleId}
+    </delete>
 </mapper>

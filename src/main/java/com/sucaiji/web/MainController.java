@@ -47,7 +47,6 @@ public class MainController {
         Integer userId=userService.judgeUser(count, password);
         //如果userid小于0，代表被ban或者什么其他的
         if(userId<0){
-           // model.addAttribute("code",BaseInterceptor.LOGIN_WRONG);
             return "redirect:/login?code="+BaseInterceptor.LOGIN_WRONG;
         }
         session.setAttribute("user_id",userId);
@@ -55,7 +54,6 @@ public class MainController {
         String userName=userService.getName(userId);
         session.setAttribute("user_name",userName);
 
-        //model.addAttribute("code",BaseInterceptor.LOGIN_SUCCESS);
         return "redirect:/index?code="+BaseInterceptor.LOGIN_SUCCESS;
     }
     @RequestMapping({"/register_judge"})

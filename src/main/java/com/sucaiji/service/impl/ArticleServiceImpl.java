@@ -1,6 +1,7 @@
 package com.sucaiji.service.impl;
 
 import com.sucaiji.dao.ArticleDao;
+import com.sucaiji.dao.CommentDao;
 import com.sucaiji.dao.UserDao;
 import com.sucaiji.dto.ArticleDto;
 import com.sucaiji.entity.Article;
@@ -20,6 +21,8 @@ import java.util.List;
 public class ArticleServiceImpl implements ArticleService {
     @Autowired
     private ArticleDao articleDao;
+    @Autowired
+    private CommentDao commentDao;
 
 
     @Override
@@ -81,5 +84,13 @@ public class ArticleServiceImpl implements ArticleService {
         Date time=new Date();
         Article article=new Article(title,content,time,0);
         articleDao.insert(article);
+    }
+
+    @Override
+    public boolean delectArticleById(Integer id) {
+        //这里加一个验证 如果没有这篇文章的id的话 就报错或者怎么怎么样
+        commentDao.delectByArticleId(id);
+        articleDao.delectById(id);
+        return true;
     }
 }

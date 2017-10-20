@@ -31,4 +31,10 @@ public interface ArticleDao {
      */
     void insert(Article article);
 
+    /**
+     * 通过id删除一篇文章
+     * @param id
+     */
+    void delectById(Integer id);
+
 }
