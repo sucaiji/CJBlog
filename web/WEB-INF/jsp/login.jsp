@@ -52,7 +52,7 @@
     <div class="form-group">
         <label for="name1" class="col-sm-2 control-label">姓名</label>
         <div class="col-sm-6">
-            <input type="text" class="form-control" id="name1" name="name" placeholder="请输入密码">
+            <input type="text" class="form-control" id="name1" name="name" placeholder="请输入姓名">
         </div>
     </div>
     <div class="form-group">

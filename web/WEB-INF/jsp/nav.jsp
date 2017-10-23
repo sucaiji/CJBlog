@@ -17,6 +17,14 @@
                 <li><a href="/backend/main">后台</a></li>
                 <li><a href="/login">注册/登陆</a></li>
             </ul>
+            <div class="nav navbar-nav navbar-right col-lg-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="请输入搜索内容">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">搜索</button>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
             <%
                 String name=(String)session.getAttribute("user_name");
                 if (name!=null) {

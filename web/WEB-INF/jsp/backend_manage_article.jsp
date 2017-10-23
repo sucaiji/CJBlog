@@ -45,7 +45,9 @@
                     if (request.getAttribute("page_amount") != null) {
                         Integer pageAmount = (Integer) request.getAttribute("page_amount");
                         for (int i = 1; i <= pageAmount; i++) {
-                            out.println("<li><a href='/backend/manage_article?pg=" + i + "'>" + i + "</a></li>");
+                            %>
+                                <li><a href='/backend/manage_article?pg=<%=i%>'><%=i%></a></li>
+                            <%
                         }
                     }
                 %>

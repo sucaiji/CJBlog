@@ -63,7 +63,7 @@ public class MainController {
                                 @RequestParam("name")String name){
         userService.createUser(count, password, name);
 
-        return "/redirect:/login?code="+BaseInterceptor.REGISTER_SUCCESS;
+        return "redirect:/login?code="+BaseInterceptor.REGISTER_SUCCESS;
     }
 
     @RequestMapping("/exit")

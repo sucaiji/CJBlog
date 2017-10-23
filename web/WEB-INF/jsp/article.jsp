@@ -17,24 +17,30 @@
 <jsp:include page="header.jsp"/>
 <jsp:include page="nav.jsp"/>
 <div>
+    标题:${requestScope.article.getTitle()}<br/>
+    日期:${requestScope.article.getDate()}<br/>
+    点击量:${requestScope.article.getClick()}<br/>
+    正文:${requestScope.article.getContent()}<br/>
+    123132-----------------------
     <%
-        if (request.getAttribute("article") != null) {
-            Article article = (Article) request.getAttribute("article");
-            out.print("标题:" + article.getTitle() + "<br/>");
-            out.print("日期:" + article.getDate() + "<br/>" + "点击量:" + article.getClick() + "<br/>");
-            out.print("正文:" + article.getContent() + "<br/>");
 
-        }
         if (request.getAttribute("comment_list") != null) {
             List<Comment> commentList=(List)request.getAttribute("comment_list");
             out.print("-------------------评论区---------------------"+"<br/>");
             for (Comment comment:commentList){
-                out.print("<div class=\"panel panel-default\"><div class=\"panel-heading\"><h3 class=\"panel-title\">用户:"+comment.getUserId()+"</h3></div><div class=\"panel-body\">"+comment.getContent()+"</div></div>");
+                %>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">用户:<%=comment.getUserId()%></h3>
+                    </div>
+                    <div class="panel-body"><%=comment.getContent()%></div>
+                </div>
+
+
+                <%
             }
         }
     %>
-
-
 
     <form  method="post">
         <input type="text" name="comment">

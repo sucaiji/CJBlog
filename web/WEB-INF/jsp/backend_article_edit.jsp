@@ -1,6 +1,4 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.sucaiji.entity.Article" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: sufchick
   Date: 2017/10/19
@@ -17,16 +15,11 @@
 <jsp:include page="nav.jsp"/>
 
 <%@ include file="backend_aside.html"%>
-<%
-    Article article=(Article)request.getAttribute("article");
-    String title=article.getTitle();
-    String content=article.getContent();
-    Integer id=article.getId();
-%>
+
 <form action="/backend/edit" method="post">
-    标题<input name="title" type="text" value="<%=title%>">
-    正文<input name="content" type="text" value="<%=content%>">
-    <input name="id" value="<%=id%>">
+    标题<input name="title" type="text" value="${requestScope.article.getTitle()}">
+    正文<input name="content" type="text" value="${requestScope.article.getContent()}">
+    <input name="id" value="${requestScope.article.getId()}">
     <input type="submit" value="提交">
 </form>
 
