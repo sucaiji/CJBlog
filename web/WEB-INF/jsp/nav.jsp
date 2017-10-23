@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.sucaiji.web.BaseInterceptor" %>
 <%--
   Created by IntelliJ IDEA.
@@ -15,7 +16,11 @@
             <ul class="nav navbar-nav">
                 <li><a href="/index">主页</a></li>
                 <li><a href="/backend/main">后台</a></li>
-                <li><a href="/login">注册/登陆</a></li>
+                <!--如果没有登陆 则显示注册/登陆按钮-->
+                <c:if test="${sessionScope.user_id==null}">
+                    <li><a href="/login">注册/登陆</a></li>
+                </c:if>
+
             </ul>
             <div class="nav navbar-nav navbar-right col-lg-6">
                 <div class="input-group">
@@ -25,71 +30,72 @@
                     </span>
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
-            <%
-                String name=(String)session.getAttribute("user_name");
-                if (name!=null) {
-            %>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="">用户:<%=name%></a>
-                </li>
-                <li><a href="/exit">退出</a></li>
-            </ul>
-            <%
+            <c:if test="${sessionScope.user_name!=null}">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="">用户:${sessionScope.user_name}</a>
+                    </li>
+                    <li><a href="/exit">退出</a></li>
 
-                }
-            %>
+                </ul>
+            </c:if>
 
         </div><!--/.nav-collapse -->
     </div>
 </nav>
-<%
-    String str=request.getParameter("code");
-    if(str==null){
-        return;
-    }
-    Integer code=Integer.valueOf(str);
-    String message="";
-    if(code>=100&&code<=199){
-        switch (code){
-            case BaseInterceptor.LOGIN_SUCCESS:
-                message="登陆成功";
-                break;
-            case BaseInterceptor.COMMENT_SUCCESS:
-                message="评论成功";
-                break;
-            case BaseInterceptor.EXIT_SUCCESS:
-                message="退出成功";
-                break;
-            case BaseInterceptor.REGISTER_SUCCESS:
-                message="注册成功";
-                break;
-            default:
-                message="成功";
-        }
-        %>
-            <div class="alert alert-success" role="alert"><%=message%></div>
-        <%
-    }
-    if(code>=200&&code<=299){
-        switch (code){
-            case BaseInterceptor.LOGIN_WRONG:
-                message="账户或者密码错误";
-                break;
-            case BaseInterceptor.NO_PERMISSION:
-                message="没有权限";
-                break;
-            case BaseInterceptor.NO_LOGIN:
-                message="没有登陆";
-                break;
-            default:
-                message="错误";
-        }
-        %>
-            <div class="alert alert-danger" role="alert"><%=message%></div>
-        <%
-    }
-%>
+
+<c:set var="login_success" value="<%=BaseInterceptor.LOGIN_SUCCESS%>"/>
+<c:set var="comment_success" value="<%=BaseInterceptor.COMMENT_SUCCESS%>"/>
+<c:set var="exit_success" value="<%=BaseInterceptor.EXIT_SUCCESS%>"/>
+<c:set var="register_success" value="<%=BaseInterceptor.REGISTER_SUCCESS%>"/>
+
+<c:set var="login_wrong" value="<%=BaseInterceptor.LOGIN_WRONG%>"/>
+<c:set var="no_permission" value="<%=BaseInterceptor.NO_PERMISSION%>"/>
+<c:set var="no_login" value="<%=BaseInterceptor.NO_LOGIN%>"/>
+
+
+<c:if test="${param.code!=null}">
+    <c:if test="${param.code>=100&&param.code<=199}">
+        <div class="alert alert-success" role="alert">
+            <c:choose>
+                <c:when test="${param.code==login_success}">
+                    登陆成功
+                </c:when>
+                <c:when test="${param.code==comment_success}">
+                    评论成功
+                </c:when>
+                <c:when test="${param.code==exit_success}">
+                    退出成功
+                </c:when>
+                <c:when test="${param.code==register_success}">
+                    注册成功
+                </c:when>
+                <c:otherwise>
+                    成功
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </c:if>
+    <c:if test="${param.code>=200&&param.code<=299}">
+        <div class="alert alert-danger" role="alert">
+            <c:choose>
+                <c:when test="${param.code==login_wrong}">
+                    账号或密码错误
+                </c:when>
+                <c:when test="${param.code==no_permission}">
+                    没有权限
+                </c:when>
+                <c:when test="${param.code==no_login}">
+                    没有登陆
+                </c:when>
+                <c:otherwise>
+                    失败
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </c:if>
+</c:if>
+
 
 
 

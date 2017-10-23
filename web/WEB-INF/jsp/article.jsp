@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.sucaiji.entity.Article" %>
 <%@ page import="com.sucaiji.entity.Comment" %><%--
@@ -21,26 +22,15 @@
     日期:${requestScope.article.getDate()}<br/>
     点击量:${requestScope.article.getClick()}<br/>
     正文:${requestScope.article.getContent()}<br/>
-    123132-----------------------
-    <%
-
-        if (request.getAttribute("comment_list") != null) {
-            List<Comment> commentList=(List)request.getAttribute("comment_list");
-            out.print("-------------------评论区---------------------"+"<br/>");
-            for (Comment comment:commentList){
-                %>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">用户:<%=comment.getUserId()%></h3>
-                    </div>
-                    <div class="panel-body"><%=comment.getContent()%></div>
-                </div>
-
-
-                <%
-            }
-        }
-    %>
+    -------------------评论区---------------------
+    <c:forEach items="${requestScope.comment_list}" var="comment">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">用户:${comment.getUserId()}</h3>
+            </div>
+            <div class="panel-body">${comment.getContent()}</div>
+        </div>
+    </c:forEach>
 
     <form  method="post">
         <input type="text" name="comment">

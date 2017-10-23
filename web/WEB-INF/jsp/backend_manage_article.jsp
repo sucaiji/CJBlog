@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.sucaiji.dto.ArticleDto" %>
 <%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
@@ -23,34 +24,24 @@
                 <li class="list-group-item active">
                     文章列表
                 </li>
-                <%
-                    if (request.getAttribute("article_list") != null) {
-                        List<ArticleDto> articleList = (List) request.getAttribute("article_list");
-                        for (ArticleDto articleDto : articleList) {
-                %>
-                <li class="list-group-item">
-                    <%=articleDto.getTitle()%>
-                    <a href="/backend/edit?id=<%=articleDto.getId()%>">编辑</a>
-                    <a href="/backend/delete?id=<%=articleDto.getId()%>">删除</a>
-                </li>
-                <%
-                        }
-                    }
-                %>
+                <c:if test="${requestScope.article_list!=null}">
+                    <c:forEach items="${requestScope.article_list}" var="article">
+                        <li class="list-group-item">
+                            ${article.getTitle()}
+                            <a href="/backend/edit?id=${article.getId()}">编辑</a>
+                            <a href="/backend/delete?id=${article.getId()}">删除</a>
+                        </li>
+                    </c:forEach>
+                </c:if>
             </div>
         </div>
         <div id="manage_page_list">
             <ul class="pagination">
-                <%
-                    if (request.getAttribute("page_amount") != null) {
-                        Integer pageAmount = (Integer) request.getAttribute("page_amount");
-                        for (int i = 1; i <= pageAmount; i++) {
-                            %>
-                                <li><a href='/backend/manage_article?pg=<%=i%>'><%=i%></a></li>
-                            <%
-                        }
-                    }
-                %>
+                <c:if test="${requestScope.page_amount!=null}">
+                    <c:forEach begin="1" end="${requestScope.page_amount}" var="page">
+                        <li><a href='/backend/manage_article?pg=${page}'>${page}</a></li>
+                    </c:forEach>
+                </c:if>
             </ul>
         </div>
     </article>

@@ -63,9 +63,8 @@ public class ArticleServiceImpl implements ArticleService {
         if (isEnd){
             fromIndex=0;
         } else{
-            fromIndex=listSize-(pageNumber)*size-1;
+            fromIndex=listSize-(pageNumber)*size;
         }
-        //因为subList截取时包含fromIndex 不包括toIndex,所以fromIndex-1  toIndex不-1
         Integer toIndex=listSize-(pageNumber-1)*size;
         List<Article> newList=articleIdList.subList(fromIndex,toIndex);
 
