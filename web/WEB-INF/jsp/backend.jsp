@@ -14,7 +14,7 @@
 <jsp:include page="header.jsp"/>
 <jsp:include page="nav.jsp"/>
 
-<jsp:include page="backend_aside.jsp"/>
+<%@ include file="backend_aside.html"%>
 123123
 
 <jsp:include page="footer.jsp"/>

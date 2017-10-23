@@ -53,6 +53,9 @@
             case BaseInterceptor.EXIT_SUCCESS:
                 message="退出成功";
                 break;
+            case BaseInterceptor.REGISTER_SUCCESS:
+                message="注册成功";
+                break;
             default:
                 message="成功";
         }

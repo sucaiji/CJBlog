@@ -14,20 +14,54 @@
 <body>
 <jsp:include page="header.jsp"/>
 <jsp:include page="nav.jsp"/>
-登陆
-<form action="/login_judge" method="post">
-    账号：<input type="text" name="count"/>
-    密码：<input type="password" name="password"/>
-    <input type="submit" value="提交balabala">
+<div>
+<form action="/login_judge" method="post" class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="count" class="col-sm-2 control-label">账号</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="count" name="count" placeholder="请输入账号">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">密码</label>
+        <div class="col-sm-6">
+            <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">登录</button>
+        </div>
+    </div>
 </form>
-注册
-<form action="/register_judge" method="post">
-    账号：<input type="text" name="count"/>
-    姓名：<input type="text" name="name"/>
-    密码：<input type="password" name="password"/>
-    确认密码<>
-    <input type="submit" value="提交balabala">
+</div>
+<div>
+<form action="/register_judge" method="post" class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="count1" class="col-sm-2 control-label">账号</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="count1" name="count" placeholder="请输入账号">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password1" class="col-sm-2 control-label">密码</label>
+        <div class="col-sm-6">
+            <input type="password" class="form-control" id="password1" name="password" placeholder="请输入密码">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="name1" class="col-sm-2 control-label">姓名</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" id="name1" name="name" placeholder="请输入密码">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">注册</button>
+        </div>
+    </div>
 </form>
+</div>
 
 <jsp:include page="footer.jsp"/>
 </body>

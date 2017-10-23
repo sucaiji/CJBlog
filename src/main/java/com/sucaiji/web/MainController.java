@@ -32,6 +32,7 @@ public class MainController {
         Integer pageAmount=articleService.getPageAmount(pageSize);
         model.addAttribute("page_amount", pageAmount);
         return "index";
+
     }
 
     @RequestMapping({"/login"})
@@ -61,7 +62,8 @@ public class MainController {
                                 @RequestParam("password")String password,
                                 @RequestParam("name")String name){
         userService.createUser(count, password, name);
-        return "success";
+
+        return "/redirect:/login?code="+BaseInterceptor.REGISTER_SUCCESS;
     }
 
     @RequestMapping("/exit")

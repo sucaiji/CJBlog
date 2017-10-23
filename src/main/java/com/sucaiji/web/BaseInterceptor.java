@@ -21,6 +21,10 @@ public class BaseInterceptor extends HandlerInterceptorAdapter {
      */
     public static final int EXIT_SUCCESS=103;
     /**
+     * 注册成功
+     */
+    public static final int REGISTER_SUCCESS=104;
+    /**
      * 没有权限
      */
     public static final int NO_PERMISSION=200;

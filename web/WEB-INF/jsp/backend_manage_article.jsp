@@ -15,10 +15,9 @@
 <jsp:include page="header.jsp"/>
 <jsp:include page="nav.jsp"/>
 
-<div>
-    <jsp:include page="backend_aside.jsp"/>
+    <%@ include file="backend_aside.html"%>
 
-    <article id="manage_article">
+    <article id="article">
         <div id="manage_article_list" class="col-sm-12">
             <div class="list-group">
                 <li class="list-group-item active">
@@ -53,7 +52,6 @@
             </ul>
         </div>
     </article>
-</div>
 
 <jsp:include page="footer.jsp"/>
 
